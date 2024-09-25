@@ -1,4 +1,4 @@
-package io.spring.cqrs.product_query.redis;
+package io.spring.cqrs.product_query.persist;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;

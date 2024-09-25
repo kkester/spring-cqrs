@@ -1,5 +1,20 @@
-# Getting Started
+# Spring CQRS
 
+## Overview
+1. Spring JPA integrated with `PostGRES` and `Redis`.
+2. Spring Modulith and JMolecules with `ArchUnit` tests to validate module and hexagonal architecture.
+3. Mapping functions leveraging `Mapstructs`.
+4. Example CQRS implementation.
+5. Example Event Sourcing implementation.
+6. Swagger API Documentation.
+
+## Running the Application
+1. Execute `gradlew bootRun`
+2. Open [Swagger UI](http://localhost:8080/swagger-ui.html) in a browser
+3. Use the `POST /products` API to create a product
+
+This will cause the application to trigger an application event that will store a representation of the product in `Redis`.  A `PostGRES` database is used for creating, updating, and deleting products while `Redis` is used for performing reads.  Executing the `GET /products` API from swagger will have the product representation returned from `Redis`.
+ 
 ### Reference Documentation
 For further reference, please consider the following sections:
 

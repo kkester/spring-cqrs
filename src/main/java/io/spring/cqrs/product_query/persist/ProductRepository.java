@@ -1,4 +1,4 @@
-package io.spring.cqrs.product_query.redis;
+package io.spring.cqrs.product_query.persist;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

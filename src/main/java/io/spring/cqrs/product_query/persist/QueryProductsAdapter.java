@@ -1,4 +1,4 @@
-package io.spring.cqrs.product_query.redis;
+package io.spring.cqrs.product_query.persist;
 
 import io.spring.cqrs.product_query.ProductRecord;
 import io.spring.cqrs.product_query.service.QueryProducts;
