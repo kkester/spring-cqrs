@@ -1,9 +1,13 @@
 package io.spring.cqrs.product_command.service;
 
-import io.spring.cqrs.product_command.SavedProduct;
+import io.spring.cqrs.common.ProductChangedEvent;
+import io.spring.cqrs.common.ProductRecord;
 import org.jmolecules.architecture.hexagonal.SecondaryPort;
+
+import java.util.UUID;
 
 @SecondaryPort
 public interface ProductPublisher {
-    void productCreated(SavedProduct savedProduct);
+    ProductChangedEvent productCreated(NewProductRecord newProductRecord);
+    ProductChangedEvent productUpdated(UUID productId, ProductRecord savedProduct);
 }

@@ -4,5 +4,5 @@ import org.jmolecules.architecture.hexagonal.Adapter;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Adapter
-public interface ProductEntityRepository extends JpaRepository<ProductEntity,Long> {
+public interface ProductChangedEventEntityRepository extends JpaRepository<ProductChangedEventEntity,Long> {
 }

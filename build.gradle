@@ -59,6 +59,7 @@ dependencies {
 	testImplementation 'org.jmolecules.integrations:jmolecules-archunit'
 	testImplementation 'org.jmolecules.integrations:jmolecules-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testRuntimeOnly 'com.h2database:h2'
 }
 
 dependencyManagement {

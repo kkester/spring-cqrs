@@ -1,6 +1,6 @@
 package io.spring.cqrs.product_query.web;
 
-import io.spring.cqrs.product_query.ProductRecord;
+import io.spring.cqrs.common.ProductRecord;
 import io.spring.cqrs.product_query.RetrieveProducts;
 import lombok.RequiredArgsConstructor;
 import org.jmolecules.architecture.hexagonal.PrimaryAdapter;

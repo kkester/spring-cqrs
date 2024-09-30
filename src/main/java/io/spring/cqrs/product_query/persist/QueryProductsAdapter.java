@@ -1,6 +1,6 @@
 package io.spring.cqrs.product_query.persist;
 
-import io.spring.cqrs.product_query.ProductRecord;
+import io.spring.cqrs.common.ProductRecord;
 import io.spring.cqrs.product_query.service.QueryProducts;
 import io.spring.cqrs.product_query.service.StoreProduct;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +25,17 @@ public class QueryProductsAdapter implements QueryProducts, StoreProduct {
     }
 
     @Override
-    public void store(ProductRecord productRecord) {
+    public void save(ProductRecord productRecord) {
         Product product = productMapper.recordToProduct(productRecord);
         productRepository.save(product);
+    }
+
+    @Override
+    public void update(ProductRecord productRecord) {
+        productRepository.findById(productRecord.id())
+                .ifPresent(product -> {
+                    productMapper.updateProductFromRecord(productRecord, product);
+                    productRepository.save(product);
+                });
     }
 }

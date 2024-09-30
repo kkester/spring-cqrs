@@ -6,13 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.redis.core.RedisHash;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @RedisHash("product")
 public class Product {
     @Id
-    private Long id;
+    private UUID id;
     private String name;
     private String description;
     private String sku;

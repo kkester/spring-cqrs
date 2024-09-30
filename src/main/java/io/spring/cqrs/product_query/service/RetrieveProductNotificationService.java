@@ -1,6 +1,6 @@
 package io.spring.cqrs.product_query.service;
 
-import io.spring.cqrs.product_query.ProductRecord;
+import io.spring.cqrs.common.ProductRecord;
 import io.spring.cqrs.product_query.RetrieveProducts;
 import lombok.RequiredArgsConstructor;
 import org.jmolecules.architecture.hexagonal.Application;
@@ -22,7 +22,12 @@ public class RetrieveProductNotificationService implements RetrieveProducts, Pro
     }
 
     @Override
-    public void handle(ProductRecord productRecord) {
-        storeProduct.store(productRecord);
+    public void handleCreate(ProductRecord productRecord) {
+        storeProduct.save(productRecord);
+    }
+
+    @Override
+    public void handleUpdate(ProductRecord productRecord) {
+        storeProduct.update(productRecord);
     }
 }

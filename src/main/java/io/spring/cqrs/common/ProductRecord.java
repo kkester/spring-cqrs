@@ -1,7 +1,9 @@
-package io.spring.cqrs.product_query;
+package io.spring.cqrs.common;
 
 
-public record ProductRecord(Long id,
+import java.util.UUID;
+
+public record ProductRecord(UUID id,
                             String name,
                             String description,
                             String sku) {

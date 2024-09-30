@@ -1,5 +1,6 @@
 package io.spring.cqrs.product_query;
 
+import io.spring.cqrs.common.ProductRecord;
 import org.jmolecules.architecture.hexagonal.PrimaryPort;
 
 import java.util.List;
