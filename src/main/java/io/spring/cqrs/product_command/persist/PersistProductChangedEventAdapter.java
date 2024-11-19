@@ -13,7 +13,7 @@ import java.time.ZonedDateTime;
 @Component
 @SecondaryAdapter
 @RequiredArgsConstructor
-public class PersistProductAdapter implements PersistProductChangedEvent {
+public class PersistProductChangedEventAdapter implements PersistProductChangedEvent {
 
     private final ProductChangedEventEntityRepository productChangedEventEntityRepository;
     private final ObjectMapper objectMapper;
