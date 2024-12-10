@@ -1,4 +1,4 @@
-package io.spring.cqrs.product_query;
+package io.spring.cqrs.product_query.service;
 
 import io.spring.cqrs.common.ProductRecord;
 import org.jmolecules.architecture.hexagonal.PrimaryPort;

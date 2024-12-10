@@ -12,6 +12,13 @@
 1. Execute `gradlew bootRun`.  This will spin up needed `Redis` and `PostGRES` docker containers in addition to starting the application.
 2. Open [Swagger UI](http://localhost:8080/swagger-ui.html) in a browser.
 3. Use the `POST /products` API to create a product.
+    ```json
+        {
+          "name": "Monster",
+          "description": "Scary Monster",
+          "sku": "1qaz-2wsx"
+        }
+    ```
 
 This will cause the application to trigger an application event that will store a representation of the product in `Redis`.  A `PostGRES` database is used for creating, updating, and deleting products while `Redis` is used for performing reads.  Executing the `POST /products` API from swagger will have the product representation stored from `PostGRES`.  Executing the `GET /products` API from swagger will have the product representation returned from `Redis`.
  

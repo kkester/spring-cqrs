@@ -7,4 +7,5 @@ import org.jmolecules.architecture.hexagonal.SecondaryPort;
 public interface StoreProduct {
     void save(ProductRecord productRecord);
     void update(ProductRecord productRecord);
+    void deleteAll();
 }

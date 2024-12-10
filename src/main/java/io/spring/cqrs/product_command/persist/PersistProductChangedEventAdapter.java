@@ -9,6 +9,7 @@ import org.jmolecules.architecture.hexagonal.SecondaryAdapter;
 import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Component
 @SecondaryAdapter
@@ -28,5 +29,17 @@ public class PersistProductChangedEventAdapter implements PersistProductChangedE
                 .publicationDate(ZonedDateTime.now())
                 .build();
         productChangedEventEntityRepository.save(productChangedEventEntity);
+    }
+
+    @Override
+    public List<ProductChangedEvent> getAllEvents() {
+        return productChangedEventEntityRepository.findAllByOrderByPublicationDateAsc().stream()
+                .map(this::toEvent)
+                .toList();
+    }
+
+    @SneakyThrows
+    private ProductChangedEvent toEvent(ProductChangedEventEntity productChangedEventEntity) {
+        return objectMapper.readValue(productChangedEventEntity.getSerializedEvent(), ProductChangedEvent.class);
     }
 }

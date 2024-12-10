@@ -1,7 +1,7 @@
 package io.spring.cqrs.product_query.service;
 
 import io.spring.cqrs.common.ProductRecord;
-import io.spring.cqrs.product_query.RetrieveProducts;
+import io.spring.cqrs.product_query.ClearProducts;
 import lombok.RequiredArgsConstructor;
 import org.jmolecules.architecture.hexagonal.Application;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @Application
 @RequiredArgsConstructor
-public class RetrieveProductNotificationService implements RetrieveProducts, ProductNotification {
+public class RetrieveProductNotificationService implements RetrieveProducts, ProductNotification, ClearProducts {
 
     private final QueryProducts queryProducts;
     private final StoreProduct storeProduct;
@@ -29,5 +29,10 @@ public class RetrieveProductNotificationService implements RetrieveProducts, Pro
     @Override
     public void handleUpdate(ProductRecord productRecord) {
         storeProduct.update(productRecord);
+    }
+
+    @Override
+    public void clearAllProducts() {
+        storeProduct.deleteAll();
     }
 }

@@ -38,4 +38,9 @@ public class QueryProductsAdapter implements QueryProducts, StoreProduct {
                     productRepository.save(product);
                 });
     }
+
+    @Override
+    public void deleteAll() {
+        productRepository.deleteAll();
+    }
 }

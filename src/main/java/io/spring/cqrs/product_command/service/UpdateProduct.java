@@ -6,6 +6,6 @@ import org.jmolecules.architecture.hexagonal.PrimaryPort;
 import java.util.UUID;
 
 @PrimaryPort
-public interface CreateProduct {
-    ProductRecord createProduct(NewProductRecord productRecord);
+public interface UpdateProduct {
+    ProductRecord updateProduct(UUID productId, ProductRecord productRecord);
 }

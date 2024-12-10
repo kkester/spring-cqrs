@@ -1,8 +1,8 @@
 package io.spring.cqrs.product_command.event;
 
 import io.spring.cqrs.common.ProductChangedEvent;
-import io.spring.cqrs.common.ProductRecord;
 import io.spring.cqrs.common.ProductEventType;
+import io.spring.cqrs.common.ProductRecord;
 import io.spring.cqrs.product_command.service.NewProductRecord;
 import io.spring.cqrs.product_command.service.ProductPublisher;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -33,5 +34,10 @@ public class ProductPublisherAdapter implements ProductPublisher {
         ProductChangedEvent productChangedEvent = productEventMapper.recordToEvent(productRecord, productId, ProductEventType.UPDATED, ZonedDateTime.now());
         eventPublisher.publishEvent(productChangedEvent);
         return productChangedEvent;
+    }
+
+    @Override
+    public void replayAllEvents(List<ProductChangedEvent> events) {
+        events.forEach(eventPublisher::publishEvent);
     }
 }

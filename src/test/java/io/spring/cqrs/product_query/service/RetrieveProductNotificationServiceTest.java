@@ -11,6 +11,7 @@ import java.util.List;
 
 import static io.spring.cqrs.product_query.ProductFactory.productRecord;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,5 +34,14 @@ class RetrieveProductNotificationServiceTest {
         List<ProductRecord> results = retrieveProductNotificationService.getProducts();
 
         assertThat(results).isSameAs(products);
+    }
+
+    @Test
+    void handleCreate() {
+        ProductRecord productRecord = productRecord();
+
+        retrieveProductNotificationService.handleCreate(productRecord);
+
+        verify(storeProduct).save(productRecord);
     }
 }

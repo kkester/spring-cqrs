@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.spring.cqrs.common.ProductRecord;
 import io.spring.cqrs.product_command.service.CreateProduct;
 import io.spring.cqrs.product_command.service.NewProductRecord;
+import io.spring.cqrs.product_command.service.RecreateProducts;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,9 +19,10 @@ import java.util.List;
 
 import static io.spring.cqrs.product_query.ProductFactory.newProductRecord;
 import static io.spring.cqrs.product_query.ProductFactory.productRecord;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,6 +31,9 @@ class ProductCommandControllerTest {
 
     @Mock
     CreateProduct createProduct;
+
+    @Mock
+    RecreateProducts recreateProducts;
 
     @InjectMocks
     ProductCommandController controller;
@@ -54,5 +59,13 @@ class ProductCommandControllerTest {
                         .content(objectMapper.writeValueAsString(newProductRecord)))
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(productRecord), true));
+    }
+
+    @Test
+    void recreateProducts() throws Exception {
+        mockMvc.perform(put("/api/products")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNoContent());
+        verify(recreateProducts).recreateProducts();
     }
 }

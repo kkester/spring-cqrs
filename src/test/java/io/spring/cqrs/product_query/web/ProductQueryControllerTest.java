@@ -2,7 +2,7 @@ package io.spring.cqrs.product_query.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.spring.cqrs.common.ProductRecord;
-import io.spring.cqrs.product_query.RetrieveProducts;
+import io.spring.cqrs.product_query.service.RetrieveProducts;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
